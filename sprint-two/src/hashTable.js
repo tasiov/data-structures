@@ -24,6 +24,10 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *  s = num chars in key string
+ *  insert: O(s) <-- hash function
+ *  retrieve: O(s) <-- hash function
+ *  remove: O(s) <-- hash function 
  */
 
 
