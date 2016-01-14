@@ -30,7 +30,7 @@ var LinkedList = function() {
 
   list.contains = function(target) {
     var pointer = this.head; 
-    while (pointer !== null) {
+    while (pointer != null) {
       if (pointer.value === target) {
         return true;
       } else {
