@@ -50,6 +50,26 @@ bTreeMethods.depthFirstLog = function(func) {
   }
 };
 
+bTreeMethods.breadthFirstLog = function(func) {
+  var breadthFirstTraverse = function(node) {
+    console.log(node);
+    func(node.value);
+    if (node.left != null) {
+      queue.push(node.left);
+    }
+    if (node.right != null) {
+      queue.push(node.right);
+    }
+    queue.shift();
+    if (queue.length > 0) {
+      breadthFirstTraverse(queue[0]);  
+    }
+  };
+
+  var queue = [this];
+  breadthFirstTraverse(queue[0]);
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  *  insert: O(log(n))
