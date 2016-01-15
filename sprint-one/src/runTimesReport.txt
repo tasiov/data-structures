@@ -1,0 +1,29 @@
+Runtimes for Different Instantiation Types of Stacks and Queues
+
+In this investigation, the following samples were created for each instantiation type: 
+
+# of stacks = 2000, each stack contained 2000 entries
+
+# of queues = 2000, each queue contained 2000 entries
+
+Results: 
+
+  Functional
+    Stack: 1073 ms
+    Queue: 1078 ms
+
+  Functional-shared
+    Stack: 1017 ms
+    Queue: 1108 ms
+
+  Prototypal
+    Stack: 762 ms
+    Queue: 1137 ms
+
+  Psuedoclassical
+    Stack: 728 ms
+    Queue: 1104 ms
+
+Comments:
+
+  For each instantiation type, queues took longer than stacks to initialize and populate. The psuedoclassical instantiation sample had the shortest runtime and was marginally faster than the prototypal instantiation sample. The runtime for the stack samples was roughly 30% faster for the prototypal and psuedoclassical instantiation types versus functional and functional-shared instantiation types. 
