@@ -38,12 +38,12 @@ treeMethods.removeFromParent = function() {
   return this.value;
 };
 
-// var Node = function(value) {
-//   var node = {};
-//   node.children = [];
-//   node.value = value || null;
-//   return node;
-// };
+treeMethods.traverse = function(callback) {
+  callback(this.value);
+  for (var i = 0; i < this.children.length; i++) {
+    this.children[i].traverse(callback);
+  }
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?

@@ -51,4 +51,25 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(false);
   });
 
+  it('should correctly use callback on each item in the tree when traverse is called', function() {
+    tree = Tree(2);
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.addChild(-1);
+    tree.children[0].addChild(7);
+    tree.children[0].addChild(15);
+    tree.children[1].addChild(8);
+    tree.children[2].addChild(0);
+    tree.children[2].addChild(13);
+    var results = [];
+
+    var doubl = function(val) {
+      results.push(val * 2);
+    };
+
+    tree.traverse(doubl);
+    expect(results.toString()).to.equal([4,10,14,30,12,16,-2,0,26].toString());
+
+  });
+
 });
