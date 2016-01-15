@@ -14,22 +14,35 @@
 var LimitedArray = function(limit) {
   var storage = [];
     for (var i = 0; i < limit; i++) {
-    storage.push({});
+    storage.push([]);
   }
 
 
   var limitedArray = {};
   limitedArray.get = function(index, key) {
     checkLimit(index);
-    return storage[index][key];
+    for (var i = 0; i < storage[index].length; i++) {
+      if (storage[index][i][0] == key) {
+        return storage[index][i][1];
+      }
+    }
+    return null;
   };
   limitedArray.set = function(index, value, key) {
     checkLimit(index);
-    storage[index][key] = value;
+    for (var i = 0; i < storage[index].length; i++) {
+      if (storage[index][i][0] == key) {
+        storage[index][i][1] = value;
+        return;
+      }
+    }
+    storage[index].push([key, value]);
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
-      callback(storage[i], i, storage);
+      for (var j = 0; j < storage[i].length; j++) {
+        callback(storage[i][j][1], storage[i][j][0], storage[i]);
+      }
     }
   };
 
