@@ -20,7 +20,6 @@ var stackMethods = {
   },
 
   push: function(value) {
-    console.log(this);
     this.storage[this.stackSize] = value;
     this.stackSize++;
   },
