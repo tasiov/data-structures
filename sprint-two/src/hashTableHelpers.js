@@ -26,7 +26,7 @@ var LimitedArray = function(limit) {
         return storage[index][i][1];
       }
     }
-    return null;
+    return undefined;
   };
   limitedArray.set = function(index, value, key) {
     checkLimit(index);
@@ -38,6 +38,15 @@ var LimitedArray = function(limit) {
     }
     storage[index].push([key, value]);
   };
+  limitedArray.remove = function(index, key) {
+    checkLimit(index);
+    for (var i = 0; i < storage[index].length; i++) {
+      if (storage[index][i][0] == key) {
+        return storage[index].splice(i,1)[0];
+      }
+    }
+    return null;
+  };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
       for (var j = 0; j < storage[i].length; j++) {
@@ -45,6 +54,17 @@ var LimitedArray = function(limit) {
       }
     }
   };
+  limitedArray.returnAll = function() {
+    var allEntries = [];
+    for (var i = 0; i < storage.length; i++) {
+      for (var j = 0; j < storage[i].length; j++) {
+        allEntries.push(storage[i][j]);
+      }
+    }
+    return allEntries;
+  };
+
+
 
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
