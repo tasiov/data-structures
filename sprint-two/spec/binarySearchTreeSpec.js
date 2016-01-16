@@ -51,4 +51,8 @@ describe('binarySearchTree', function() {
       binarySearchTree.breadthFirstLog(func);
       expect(array).to.eql([2,-1,4,-2,1,3,7,9]);
     });
+
+  it('should execute a callback on every value in a tree using "breadthFirstLog"', function(){
+    
+  });
 });
