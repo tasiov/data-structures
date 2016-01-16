@@ -1,23 +1,10 @@
-function generateStack(obj) {
+function generate(obj) {
   var temp = 2000;
   while (temp >= 0) {
     var rand = Math.floor(Math.random() * 100);
-    if (obj.__proto__.hasOwnProperty('push')) {
+    if (obj.push) {
       obj.push(rand);
-    } else if (obj.__proto__.hasOwnProperty('enqueue')){
-      obj.enqueue(rand);
-    }
-    temp--;
-  }
-}
-
-function generateQueue(obj) {
-  var temp = 2000;
-  while (temp >= 0) {
-    var rand = Math.floor(Math.random() * 100);
-    if (obj.__proto__.hasOwnProperty('push')) {
-      obj.push(rand);
-    } else if (obj.__proto__.hasOwnProperty('enqueue')){
+    } else if (obj.enqueue){
       obj.enqueue(rand);
     }
     temp--;
@@ -29,8 +16,8 @@ function testProfile() {
   while (temp >= 0) {
     var s = new Stack();
     var q = new Queue();
-    generateStack(s);
-    generateQueue(q); 
+    generate(s);
+    generate(q); 
     temp--;
   }
 }
